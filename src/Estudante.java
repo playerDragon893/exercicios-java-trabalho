@@ -21,8 +21,16 @@ public class Estudante {
         Scanner scanner = new Scanner(System.in);
 
         for (int i = 0; i < notas.length; i++) {
-            System.out.print("Digite a nota " + (i + 1) + ": ");
-            notas[i] = scanner.nextDouble();
+
+            do {
+                System.out.print("Digite a nota " + (i + 1) + " (de 0 a 10): ");
+                notas[i] = scanner.nextDouble();
+
+                if (notas[i] < 0 || notas[i] > 10) {
+                    System.out.println("Nota invalida! Digite uma nota entre 0 e 10.");
+                }
+
+            } while (notas[i] < 0 || notas[i] > 10);
         }
     }
 
