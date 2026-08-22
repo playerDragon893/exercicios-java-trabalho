@@ -4,26 +4,82 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Cria um estudante
-        Estudante estudante = new Estudante("Juan");
+        // Cria 3 estudantes
+        Estudante estudante1 = new Estudante("Juan");
+        Estudante estudante2 = new Estudante("Maria");
+        Estudante estudante3 = new Estudante("Pedro");
 
-        // Insere as 5 notas pelo teclado
-        estudante.insereNotas();
+        // Insere as notas de cada estudante
+        System.out.println("Notas do Juan:");
+        estudante1.insereNotas();
 
-        // Mostra o nome
-        System.out.println("Nome: " + estudante.getNome());
+        System.out.println("Notas da Maria:");
+        estudante2.insereNotas();
 
-        // Mostra as notas
-        System.out.println("Notas:");
+        System.out.println("Notas do Pedro:");
+        estudante3.insereNotas();
 
-        for (double nota : estudante.getNotas()) {
-            System.out.println(nota);
+        // Cria um array contendo os 3 estudantes
+        Estudante[] estudantes = {
+                estudante1,
+                estudante2,
+                estudante3
+        };
+
+        // Chama o método do exercício 2
+        Estudante[] aprovados = selecionarAprovados(estudantes);
+
+        // Verifica se houve algum aprovado
+        if (aprovados == null) {
+
+            System.out.println("Nenhum estudante foi aprovado.");
+
+        } else {
+
+            System.out.println("\nEstudantes aprovados:");
+
+            for (Estudante estudante : aprovados) {
+                System.out.println(estudante.getNome() +
+                        " - Media: " + estudante.calculaMedia());
+            }
+        }
+    }
+
+    // Recebe um array de estudantes e retorna somente os aprovados
+    public static Estudante[] selecionarAprovados(Estudante[] estudantes) {
+
+        // Conta quantos estudantes foram aprovados
+        int quantidadeAprovados = 0;
+
+        for (Estudante estudante : estudantes) {
+            if (estudante.calculaMedia() >= 6) {
+                quantidadeAprovados++;
+            }
         }
 
-        // Mostra a média
-        System.out.println("Media: " + estudante.calculaMedia());
+        // Se ninguém foi aprovado
+        if (quantidadeAprovados == 0) {
+            return null;
+        }
 
-        // Mostra a menor nota
-        System.out.println("Menor nota: " + estudante.menorNota());
+        // Cria o array somente com os aprovados
+        Estudante[] aprovados = new Estudante[quantidadeAprovados];
+
+        // Posição no novo array
+        int posicao = 0;
+
+        // Percorre novamente os estudantes
+        for (Estudante estudante : estudantes) {
+
+            if (estudante.calculaMedia() >= 6) {
+
+                aprovados[posicao] = estudante;
+
+                posicao++;
+            }
+        }
+
+        // Retorna os aprovados
+        return aprovados;
     }
 }
