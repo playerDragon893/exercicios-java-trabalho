@@ -26,4 +26,11 @@ public class Main {
         // Mostra a menor nota
         System.out.println("Menor nota: " + estudante.menorNota());
     }
+
+    // Recebe um array de estudantes e vai retornar apenas os aprovados
+    public static Estudante[] selecionarAprovados(Estudante[] estudantes) {
+
+        // Por enquanto, o metodo ainda não possui a lógica completa
+        return null;
+    }
 }
