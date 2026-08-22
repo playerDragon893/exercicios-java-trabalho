@@ -40,7 +40,7 @@ public class Main {
             );
         }
 
-        // Chama o método do exercício 2
+        // Chama o metodo do exercício 2
         Estudante[] aprovados = selecionarAprovados(estudantes);
 
         // Verifica se houve algum aprovado
