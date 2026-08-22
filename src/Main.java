@@ -27,10 +27,45 @@ public class Main {
         System.out.println("Menor nota: " + estudante.menorNota());
     }
 
-    // Recebe um array de estudantes e vai retornar apenas os aprovados
+
+    // Recebe um array de estudantes e retorna somente os aprovados
     public static Estudante[] selecionarAprovados(Estudante[] estudantes) {
 
-        // Por enquanto, o metodo ainda não possui a lógica completa
-        return null;
+        // Conta quantos estudantes foram aprovados
+        int quantidadeAprovados = 0;
+
+        for (Estudante estudante : estudantes) {
+            if (estudante.calculaMedia() >= 6) {
+                quantidadeAprovados++;
+            }
+        }
+
+        // Se ninguém foi aprovado, retorna null
+        if (quantidadeAprovados == 0) {
+            return null;
+        }
+
+        // Cria um novo array com o tamanho exato dos aprovados
+        Estudante[] aprovados = new Estudante[quantidadeAprovados];
+
+        // Posição onde o próximo aprovado será colocado
+        int posicao = 0;
+
+        // Percorre novamente os estudantes
+        for (Estudante estudante : estudantes) {
+
+            // Verifica se foi aprovado
+            if (estudante.calculaMedia() >= 6) {
+
+                // Coloca o estudante no array de aprovados
+                aprovados[posicao] = estudante;
+
+                // Vai para a próxima posição
+                posicao++;
+            }
+        }
+
+        // Retorna o array contendo somente os aprovados
+        return aprovados;
     }
 }
