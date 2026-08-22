@@ -26,21 +26,37 @@ public class Main {
                 estudante3
         };
 
-        // Chama o método do exercício 2
+        // Pesos das 5 notas
+        int[] pesos = {1, 2, 3, 2, 1};
+
+        // Mostra as médias
+        System.out.println("\nMedias:");
+
+        for (Estudante estudante : estudantes) {
+            System.out.println(
+                    estudante.getNome() +
+                            " - Media normal: " + estudante.calculaMedia() +
+                            " - Media ponderada: " + estudante.calculaMedia(pesos)
+            );
+        }
+
+        // Chama o metodo do exercício 2
         Estudante[] aprovados = selecionarAprovados(estudantes);
 
         // Verifica se houve algum aprovado
         if (aprovados == null) {
 
-            System.out.println("Nenhum estudante foi aprovado.");
+            System.out.println("\nNenhum estudante foi aprovado.");
 
         } else {
 
             System.out.println("\nEstudantes aprovados:");
 
             for (Estudante estudante : aprovados) {
-                System.out.println(estudante.getNome() +
-                        " - Media: " + estudante.calculaMedia());
+                System.out.println(
+                        estudante.getNome() +
+                                " - Media: " + estudante.calculaMedia()
+                );
             }
         }
     }
@@ -74,7 +90,6 @@ public class Main {
             if (estudante.calculaMedia() >= 6) {
 
                 aprovados[posicao] = estudante;
-
                 posicao++;
             }
         }
