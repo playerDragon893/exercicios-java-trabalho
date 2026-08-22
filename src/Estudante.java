@@ -50,4 +50,13 @@ public class Estudante {
         return menor;
     }
 
+    // Metodo para retornar o nome do estudante
+    public String getNome() {
+        return nome;
+    }
+
+    // Metodo para retornar o array de notas
+    public double[] getNotas() {
+        return notas;
+    }
 }
